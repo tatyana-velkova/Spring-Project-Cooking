@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="text-center p-5 form-layout w-75"
+      th:object="${courseAddBindingModel}" th:action="@{/courses/announce}" method="POST" id="share-receipt-form">
+    <p class="h4 mb-4 text-white">Announce a Course</p>
+
+    <input th:field="*{name}" th:errorclass="bg-danger"  type="text" id="name" name="name" class="form-control mb-4" placeholder="Course name">
+    <small th:each="e : ${#fields.errors('name')}" th:text="${e}" class="text-danger"></small>
+
+    <input th:field="*{location}" th:errorclass="bg-danger" type="text" id="location" name="location" class="form-control mb-4"
+           placeholder="Location">
+    <small th:each="e : ${#fields.errors('location')}" th:text="${e}" class="text-danger"></small>
+
+
+    <div class="input-group mb-3">
+        <input th:field="*{startDate}" th:errorclass="bg-danger" id="startDate" name="startDate" type="date"
+               class="form-control mb-4" data-large-mode="true" />
+    </div>
+    <div class="input-group mb-3 justify-content-center">
+
+        <small th:each="e : ${#fields.errors('startDate')}" th:text="${e}" class="text-danger">The date cannot be in the past!</small>
+    </div>
+
+    <div class="input-group mb-3 ">
+        <input  th:field="*{endDate}" th:errorclass="bg-danger" id="endDate" name="endDate" type="date"
+               class="form-control mb-4" data-large-mode="true"/>
+    </div>
+    <div class="input-group mb-3 justify-content-center">
+        <small th:each="e : ${#fields.errors('endDate')}" th:text="${e}" class="text-danger" >The date cannot be in the past!</small>
+    </div>
+
+    <input th:field="*{organiserName}" th:errorclass="bg-danger" type="text" id="organiserName" name="organiserName"
+              class="form-control mb-4" placeholder="Organiser name"></input>
+    <small th:each="e : ${#fields.errors('organiserName')}" th:text="${e}" class="text-danger"></small>
+
+    <input th:field="*{organiserEmail}" th:errorclass="bg-danger" type="text" id="organiserEmail" name="organiserEmail"
+           class="form-control mb-4" placeholder="Organiser email"></input>
+    <small th:each="e : ${#fields.errors('organiserEmail')}" th:text="${e}" class="text-danger"></small>
+
+    <small class="text-white text-left">Enter number of participants</small>
+    <input th:field="*{participants}" th:errorclass="bg-danger" type="number" id="participants" name="participants"
+           class="form-control" placeholder="Number of participants"></input>
+    <small th:each="e : ${#fields.errors('participants')}" th:text="${e}" class="text-danger"></small>
+
+
+
+
+    <button class="btn btn-success text-white" type="submit">Submit</button>
+</form>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

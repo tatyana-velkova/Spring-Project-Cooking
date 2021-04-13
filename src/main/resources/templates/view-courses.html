@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <h1 class="text-white text-center mt-3">Cooking Courses</h1>
+
+    <div class="row mt-5" id="coursesList">
+    </div>
+    </div>
+
+</main>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+<script th:src="@{/js/course-display.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="text-center p-5 form-layout"
+      th:object="${recipeAddBindingModel}" th:action="@{/recipes/add}" method="POST" id="share-receipt-form">
+    <p class="h4 mb-4 text-white">Share Recipe</p>
+
+    <input th:field="*{name}" th:errorclass="bg-danger"  type="text" id="name" name="name" class="form-control mb-4" placeholder="Meal name">
+    <small th:each="e : ${#fields.errors('name')}" th:text="${e}" class="text-danger"></small>
+
+    <input th:field="*{ingredients}" th:errorclass="bg-danger" type="text" id="ingredients" name="ingredients" class="form-control mb-4"
+           placeholder="Ingredients">
+    <small th:each="e : ${#fields.errors('ingredients')}" th:text="${e}" class="text-danger"></small>
+
+    <textarea th:field="*{preparationMethod}" th:errorclass="bg-danger" type="text" id="preparationMethod" name="preparationMethod"
+              class="form-control mb-4" placeholder="Preparation Method"></textarea>
+    <small th:each="e : ${#fields.errors('preparationMethod')}" th:text="${e}" class="text-danger"></small>
+
+    <select class="browser-default custom-select mb-5" id="category" name="category">
+        <option value="">Select category</option>
+        <option th:each="c : ${allCategories}" th:text="${c}" th:value="${c}">Salad</option>
+    </select>
+
+    <input th:field="*{imageUrl}" type="text" id="imageUrl" name="imageUrl" class="form-control mb-4"
+           placeholder="Image URL">
+
+
+    <button class="btn btn-success text-white" type="submit">Submit</button>
+</form>
+
+<footer class="mastfoot mt-5 text-center text-light">
+   <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

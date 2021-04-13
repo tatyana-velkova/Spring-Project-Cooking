@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <th:block th:unless="${noRecipes}">
+        <div class="row form-layout p-5">
+            <div class="recipeContainer col-md-12">
+                <div th:each="r : ${allSushi}" th:object="${r}"  class="recipeInfo">
+                    <div class=" recipeItem card mb-5">
+                        <div>
+                            <img class="recipeImg card-img-top img-fluid" th:src="*{imageUrl}">
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title" th:text="*{name}">Meal Name</h4>
+                            <a class="recipeBtn btn" th:href="@{/recipes/details/{id}(id=*{id})}" >View Details</a>
+                            <a class="recipeBtn deleteBtn btn" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/recipes/delete/{id}(id=*{id})}" >Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </th:block>
+
+    <th:block th:if="${noRecipes}">
+        <div class="card w-50 h-50 mb-5">
+            <div class="card-body">
+                <h4 class="card-title text-dark">No recipes have been shared in this category</h4>
+                <small> Be the first one to add one</small>
+
+            </div>
+        </div>
+    </th:block>
+
+</main>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

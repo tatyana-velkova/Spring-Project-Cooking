@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="recipeDetailContainer">
+            <div th:object="${recipeDetails}">
+                <div class="recipeDetail">
+                    <div class="recipeImgDetailWrapper">
+                        <img class="recipeImgDetail card-img-top img-fluid" th:src="*{imageUrl}">
+                    </div>
+
+                    <div>
+                        <h4 class="recipeDetailTextTitle card-title" th:text="*{name}">Meal Name</h4>
+                        <h4 class="recipeDetailText card-title">Ingredients</h4>
+                        <h6 style="margin-bottom: 30px" th:text="*{ingredients}"></h6>
+                        <h4 class="recipeDetailText card-title" >Preparation method</h4>
+                        <h6 th:text="*{preparationMethod}"></h6>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </div>
+</main>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

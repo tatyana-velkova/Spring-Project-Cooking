@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                 <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                  <th:block th:include="~{fragments/nav}"></th:block>
+                 </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container-fluid">
+        <div class=" homeContainer">
+            <div class="recipeItemHome offer card ">
+                <a href="/recipes/salads">
+                    <div class="card-img-top-wrapper">
+                        <img class="recipeImgHome card-img-top" src="/img/salad.jpg" alt="image">
+                    </div>
+                    <div class="card-body pb-1">
+                        <h5 class="card-title text-center text-dark">SALADS</h5>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="recipeItemHome offer card">
+                <a href="/recipes/mainDishes">
+                    <div class="card-img-top-wrapper">
+                        <img class="recipeImgHome card-img-top" src="/img/main.jpg" alt="image">
+                    </div>
+                    <div class="card-body pb-1">
+                        <h5 class="card-title text-center text-dark">MAIN DISHES</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="recipeItemHome offer card">
+                <a href="/recipes/desserts">
+                    <div class="card-img-top-wrapper">
+                        <img class="recipeImgHome card-img-top" src="/img/dessert.jpg" alt="image">
+                    </div>
+                    <div class="card-body pb-1">
+                        <h5 class="card-title text-center text-dark">DESSERTS</h5>
+                    </div>
+                </a>
+            </div>
+
+                <div class="recipeItemHome offer card">
+                    <a href="/recipes/sushi">
+                        <div class="card-img-top-wrapper">
+                            <img class="recipeImgHome card-img-top" src="/img/sushi.jpg" alt="image">
+                        </div>
+                        <div class="card-body pb-1">
+                            <h5 class="card-title text-center text-dark">SUSHI</h5>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="recipeItemHome offer card">
+                    <a href="/recipes/pizza">
+                        <div class="card-img-top-wrapper">
+                            <img class="recipeImgHome card-img-top" src="/img/pizza.jpg" alt="image">
+                        </div>
+                        <div class="card-body pb-1">
+                            <h5 class="card-title text-center text-dark">PIZZA</h5>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+    </div>
+</main>
+
+        <footer class="mastfoot mt-5 text-center text-light">
+            <th:block th:include="~{fragments/footer}"></th:block>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+
+<body>
+<div class="container ">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light rounded">
+        <th:block th:include="~{/fragments/nav-guest}"></th:block>
+    </nav>
+
+    <div style="margin-top: 50px; text-align: center" th:if="${bad_credentials}" class="alert alert-danger" role="alert">
+        This username and password combination does not exist.
+    </div>
+
+    <form class="text-center p-5 form-layout"
+           th:action="@{/users/login}" method="POST">
+
+        <p class="h4 mb-4 text-white">Login</p>
+
+        <input type="text" id="username" name="username"
+               required minlength="3" maxlength="10"
+               th:value="${username}" class="form-control mb-4"
+               placeholder="Username">
+
+        <input type="password" id="password" name="password"
+               required minlength="3" maxlength="10"
+               class="form-control"
+               placeholder="Password">
+        <hr>
+
+        <button class="btn btn-success text-white" type="submit">Login</button>
+
+    </form>
+    <footer class="mastfoot mt-5 text-center text-light">
+        <div class="inner">
+            <p>Never give up, always get better</a></p>
+        </div>
+        <i class="fa fa-heart"></i>
+    </footer>
+
+</div>
+
+</body>
+
+</html>

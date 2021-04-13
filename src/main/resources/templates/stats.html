@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <h2 class="text-light text-center" style="margin: 50px">User statistics</h2>
+    <div class="table-responsive text-light">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date and Time</th>
+                <th>Action</th>
+                <th>Recipe Name</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="log : ${logs}" th:object="${log}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{localDateTime}"></td>
+                <td th:text="*{action}"></td>
+                <td th:text="*{recipe}"></td>
+                <td th:text="*{user}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <hr>
+    <hr>
+    <hr>
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

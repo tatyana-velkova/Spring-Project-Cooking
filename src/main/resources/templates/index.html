@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded p-3 mb-2 border border-success">
+                   <th:block th:include="~{/fragments/nav-guest}"></th:block>
+                </nav>
+            </div>
+        </div>
+        <div>
+        <h1 class="cover-heading text-right mt-5 text-white">Become a master chef at home</h1>
+        <p class="lead text-right text-white">Only those who don't try it do not succeed
+        </p>
+        </div>
+        <div class="emptyContainer"></div>
+        <footer class="row">
+            <th:block th:include="~{/fragments/footer}"></th:block>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

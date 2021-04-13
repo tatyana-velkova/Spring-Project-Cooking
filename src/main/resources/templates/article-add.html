@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<form class="text-center p-5 form-layout w-75"
+      th:object="${articleAddBindingModel}" th:action="@{/articles/add}" method="POST" id="share-receipt-form">
+    <p class="h4 mb-4 text-white">Article details</p>
+
+    <input th:field="*{title}" th:errorclass="bg-danger"  type="text" id="title" name="title" class="form-control mb-4" placeholder="Article title">
+    <small th:each="e : ${#fields.errors('title')}" th:text="${e}" class="text-danger"></small>
+
+    <div class="input-group mb-3">
+        <input th:field="*{publishDate}" th:errorclass="bg-danger" id="publishDate" name="publishDate" type="datetime-local"
+               class="form-control mb-4" data-large-mode="true" />
+    </div>
+    <div class="input-group mb-3 justify-content-center">
+
+        <small th:each="e : ${#fields.errors('publishDate')}" th:text="${e}" class="text-danger"></small>
+    </div>
+
+    <input th:field="*{description}" th:errorclass="bg-danger"  type="text" id="description" name="description" class="form-control mb-4" placeholder="Article text">
+    <small th:each="e : ${#fields.errors('description')}" th:text="${e}" class="text-danger"></small>
+
+    <button class="btn btn-success text-white" type="submit">Submit</button>
+</form>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>

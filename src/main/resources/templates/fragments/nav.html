@@ -1,0 +1,51 @@
+<th:block xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <th:block>
+        <a class="navbar-brand" href="/home">
+            <h5 class="font-weight-normal">CookMasters</h5>
+        </a>
+        <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav mx-auto">
+
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
+                    <a class="navTitles nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        ADMIN
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="navTitles dropdown-item" href="/statistics">Statistics</a>
+                        <a class="navTitles dropdown-item" href="/courses/announce">Add Course</a>
+                        <a class="navTitles dropdown-item" href="/roles/add">Change User Role</a>
+
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="navTitles nav-link" href="/recipes/add">ADD RECIPE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navTitles nav-link" href="/courses/list">VIEW COURSES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navTitles nav-link" href="/articles/list">BLOG</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/logout}" method="POST">
+                        <button type="submit" class="nav-link">Logout</button>
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+    </th:block>
+</th:block>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded" >
+                    <th:block th:include="~{fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <h1 class="text-white text-center">Cooking Blog</h1>
+
+    <a style="color: white; background: red; border-radius: 7px; padding: 10px; margin-left: 45px" th:href="@{/articles/add}">Add a new article</a>
+
+    <th:block th:unless="${noArticles}">
+        <div class="row form-layout p-5">
+            <div class="col-md-12">
+                <div th:each="a : ${allArticles}" th:object="${a}"  class="recipeInfo">
+                    <div class="card w-50 h-50 mb-5">
+                        <div class="card-body">
+                            <h4 class="card-title font-weight-bold text-uppercase text-danger" th:text="*{title}"></h4>
+                            <p class="card-text text-primary" th:text="|Publish date: *{publishDate}|"></p>
+                            <p style="display:inline-block; max-width:500px; white-space: nowrap;
+                             overflow: hidden; text-overflow:ellipsis" class="card-text" th:text="*{description}"></p>
+                            <a class="ml-3 text-danger" th:href="@{/articles/read/{id}(id=*{id})}">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </th:block>
+
+    <th:block th:if="${noArticles}">
+        <div class="card w-50 h-50 mb-5">
+            <div class="card-body">
+                <h4 class="card-title text-dark">There are no articles yet.</h4>
+
+            </div>
+        </div>
+    </th:block>
+
+
+</main>
+
+<footer class="mastfoot mt-5 text-center text-light">
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+</body>
+</html>
